@@ -1,7 +1,5 @@
 import java.util.HashMap;
 
-//reykjavik
-
 /**
  * An implementation of <tt>Cache</tt> that uses a least-recently-used (LRU)
  * eviction policy.
