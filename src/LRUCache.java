@@ -11,8 +11,8 @@ public class LRUCache<T, U> implements Cache<T, U> {
 	private DataProvider<T, U> _provider;
 	private int _capacity;
 	private HashMap<T, Node> storedValues;
-	Node mostRecent;
-	Node leastRecent;
+	private Node mostRecent;
+	private Node leastRecent;
 
 	/**
 	 * @param provider
