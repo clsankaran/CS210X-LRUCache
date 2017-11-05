@@ -50,7 +50,6 @@ public class IntegerToTextProvider implements DataProvider<Integer, String>{
 			return "nineteen";
 		else if (key==19)
 			return "twenty";
-		// TODO Nilay finish these until 20
 		else
 			return "int not in range";
 	}
