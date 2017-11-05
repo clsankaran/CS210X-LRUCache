@@ -72,4 +72,5 @@ public class LRUCache<T, U> implements Cache<T, U> {
 	public int getNumMisses() {
 		return _numMisses;
 	}
+
 }

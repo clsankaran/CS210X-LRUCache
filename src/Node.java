@@ -35,4 +35,5 @@ public class Node<T, U> {
 	public void setNext(Node n) {
 		_next = n;
 	}
+
 }

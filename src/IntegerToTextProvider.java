@@ -17,6 +17,4 @@ public class IntegerToTextProvider implements DataProvider<Integer, String>{
 			return "int not in range";
 	}
 
-	
-
 }
