@@ -1,7 +1,3 @@
-/**
- * implementation of DataProvider
- */
-
 
 public class IntegerToTextProvider implements DataProvider<Integer, String>{
 

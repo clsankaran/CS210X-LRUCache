@@ -6,8 +6,14 @@ import java.util.HashMap;
  */
 
 public class LRUCache<T, U> implements Cache<T, U> {
-	
-	private int numMisses;
+
+	private int _numMisses;
+	private DataProvider<T, U> _provider;
+	private int _capacity;
+	private HashMap<T, Node> storedValues;
+	Node mostRecent;
+	Node leastRecent;
+
 	/**
 	 * @param provider
 	 *            the data provider to consult for a cache miss
@@ -15,8 +21,12 @@ public class LRUCache<T, U> implements Cache<T, U> {
 	 *            the exact number of (key,value) pairs to store in the cache
 	 */
 	public LRUCache(DataProvider<T, U> provider, int capacity) {
-		
-		numMisses=0;
+
+		_numMisses = 0;
+		_provider = provider;
+		_capacity = capacity;
+		mostRecent = null;
+		leastRecent = null;
 
 	}
 
@@ -28,7 +38,30 @@ public class LRUCache<T, U> implements Cache<T, U> {
 	 * @return the value associated with the key
 	 */
 	public U get(T key) {
-		return null; // TODO -- implement!
+		if (storedValues.containsKey(key)) { // hit
+			final Node desiredNode = storedValues.get(key);
+			moveToMostRecent(desiredNode);
+			return (U) desiredNode.getValue();
+
+		}
+
+		else { // miss
+			final Node newNode = new Node(key, _provider.get(key));
+			if (storedValues.size() >= _capacity) { //need to evict
+				storedValues.remove(leastRecent.getKey());
+			}
+			storedValues.put(key, newNode);
+			moveToMostRecent(newNode);
+			_numMisses++;
+			return (U) newNode.getValue();
+		}
+
+	}
+
+	private void moveToMostRecent(Node desiredNode) {
+		desiredNode.getPrevious().setNext(desiredNode.getNext());
+		desiredNode.setNext(mostRecent);
+		desiredNode.setPrevious(null);
 	}
 
 	/**
@@ -37,6 +70,6 @@ public class LRUCache<T, U> implements Cache<T, U> {
 	 * @return the number of cache misses since the object's instantiation.
 	 */
 	public int getNumMisses() {
-		return numMisses;
+		return _numMisses;
 	}
 }
