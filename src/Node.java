@@ -19,6 +19,7 @@ public class Node<T, U> {
 	public T getKey() {
 		return _key;
 	}
+
 	public Node getPrevious() {
 		return _previous;
 	}
