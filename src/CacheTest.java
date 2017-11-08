@@ -13,4 +13,12 @@ public class CacheTest {
 		Cache<Integer,String> cache = new LRUCache<Integer,String>(provider, 4);
 	}
 
+	@Test
+	public void testSingleEntry() {
+		DataProvider<Integer,String> provider = new IntegerToTextProvider();
+		final LRUCache<Integer, String> cache = new LRUCache<Integer, String>(provider,1);
+		cache.get(1);
+		assertTrue(cache.getNumMisses() == 1);
+	}
+
 }
