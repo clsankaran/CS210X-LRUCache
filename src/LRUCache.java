@@ -67,15 +67,15 @@ public class LRUCache<T, U> implements Cache<T, U> {
 	public U get(T key) {
 		if (_storedValues.containsKey(key)) { // hit
 			final Node<T, U> desiredNode = _storedValues.get(key);
-			
+
 			// if it is mostRecent, then nothing needs to be done
 			if (!(_mostRecent.equals(desiredNode))) { // if the desiredNode is not already mostRecent
-				if (desiredNode.equals(_leastRecent)) { //if the desiredNode is the leastRecent
+				if (desiredNode.equals(_leastRecent)) { // if the desiredNode is the leastRecent
 					_leastRecent = desiredNode._previous;
 				}
 				moveToMostRecent(desiredNode);
 			}
-			
+
 			return desiredNode._value;
 
 		}
@@ -84,15 +84,15 @@ public class LRUCache<T, U> implements Cache<T, U> {
 			final Node<T, U> newNode = new Node<T, U>(key, _provider.get(key), null, null);
 			if (_storedValues.size() >= _capacity) { // need to evict
 				_storedValues.remove(_leastRecent._key);
-				_leastRecent=_leastRecent._previous;
+				_leastRecent = _leastRecent._previous;
 				if (_storedValues.containsKey(_mostRecent._key)) { // if there is still a mostRecent after removal
-					newNode._next=_mostRecent;
+					newNode._next = _mostRecent;
 				}
 			}
-			
+
 			_storedValues.put(key, newNode);
 			if (_mostRecent != null) { // if there is currently a mostRecent
-				_mostRecent._previous=newNode;
+				_mostRecent._previous = newNode;
 			}
 			_mostRecent = newNode;
 			if (_leastRecent == null) { // if nothing has been assigned to _leastRecent yet or it was just removed
