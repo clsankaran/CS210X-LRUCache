@@ -50,7 +50,7 @@ public class CacheTest {
 		assertTrue(cache.getNumMisses() == 2);
 		cache.get(10); // making sure that it misses
 		assertTrue(cache.getNumMisses() == 3);
-		cache.get(10); // making suer that it doesn't miss
+		cache.get(10); // making sure that it doesn't miss
 		assertTrue(cache.getNumMisses() == 3); 
 	}
 
