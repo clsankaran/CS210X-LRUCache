@@ -29,6 +29,26 @@ public class IntegerToTextProvider implements DataProvider<Integer, String> {
 			return "nine";
 		else if (key == 10)
 			return "ten";
+		else if (key == 11)
+			return "eleven";
+		else if (key == 12)
+			return "twelve";
+		else if (key == 13)
+			return "thirteen";
+		else if (key == 14)
+			return "fourteen";
+		else if (key == 15)
+			return "fifteen";
+		else if (key == 16)
+			return "sixteen";
+		else if (key == 17)
+			return "seventeen";
+		else if (key == 18)
+			return "eighteen";
+		else if (key == 19)
+			return "nineteen";
+		else if (key == 20)
+			return "twenty";
 		else
 			return "int not in range";
 	}
