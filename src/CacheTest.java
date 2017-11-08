@@ -10,7 +10,7 @@ public class CacheTest {
 	@Test
 	public void leastRecentlyUsedIsCorrect () {
 		DataProvider<Integer,String> provider = new IntegerToTextProvider(); // Need to instantiate an actual DataProvider
-		Cache<Integer,String> cache = new LRUCache<Integer,String>(provider, 5);
+		Cache<Integer,String> cache = new LRUCache<Integer,String>(provider, 4);
 	}
 
 }
