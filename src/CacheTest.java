@@ -15,10 +15,10 @@ public class CacheTest {
 
 	@Test
 	public void testSingleEntry() {
-		DataProvider<Integer,String> provider = new IntegerToTextProvider();
-		Cache<Integer, String> cache = new LRUCache<Integer, String>(provider,1);
-		cache.get(1);
-		assertTrue(cache.getNumMisses() == 1);
+		DataProvider<Integer,String> provider2 = new IntegerToTextProvider();
+		Cache<Integer, String> cache2 = new LRUCache<Integer, String>(provider2,1);
+		cache2.get(1);
+		assertTrue(cache2.getNumMisses() == 1);
 	}
 
 }
