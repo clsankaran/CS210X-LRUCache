@@ -11,6 +11,7 @@ public class CacheTest {
 	private Cache<Integer, String> cache;
 
 	@Test
+	//This method will test the cache system on multiple entries
 	public void testMultipleEntry() {
 		cache = new LRUCache<Integer, String>(provider, 4);
 		cache.get(1);
@@ -41,6 +42,7 @@ public class CacheTest {
 	}
 
 	@Test
+	//This method will test the cache system on a single entry
 	public void testSingleEntry() {
 		cache = new LRUCache<Integer, String>(provider, 1);
 		cache.get(10);

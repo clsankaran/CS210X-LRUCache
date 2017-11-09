@@ -2,10 +2,15 @@
 public class IntegerToTextProvider implements DataProvider<Integer, String> {
 
 	@Override
+	/* This method will call upon the convertIntToString method to return the value of
+	  the number key to a string of the number*/
 	public String get(Integer key) {
 		return convertIntToString(key);
 	}
-
+	/* This method will check every key from 0 to 20 and return the key that is called
+	 * upon as a string. If it is not within the range of 0 to 20 it will return that 
+	 * it is not in the range.
+	 */
 	private String convertIntToString(Integer key) {
 		if (key == 0)
 			return "zero";
