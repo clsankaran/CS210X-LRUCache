@@ -8,7 +8,7 @@ public class CacheTest {
 
 	// instance variables
 	final private DataProvider<Integer, String> provider = new IntegerToTextProvider();
-	private Cache<Integer, String> cache;
+	private Cache<Integer, String> cache; // not final because two different caches are used
 
 	@Test
 	/**
