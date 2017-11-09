@@ -32,13 +32,13 @@ public class LRUCache<T, U> implements Cache<T, U> {
 
 		/**
 		 * @param key
-		 * 				the key stored
+		 *            the key stored
 		 * @param value
-		 * 				the value stored
+		 *            the value stored
 		 * @param previous
-		 * 				the previous node in the linked list
+		 *            the previous node in the linked list
 		 * @param next
-		 * 				the next node in the linked list
+		 *            the next node in the linked list
 		 */
 		private Node(T key, U value, Node<T, U> previous, Node<T, U> next) {
 			_key = key;
@@ -117,7 +117,7 @@ public class LRUCache<T, U> implements Cache<T, U> {
 	 * Moving a node in the LRUCache to be the most recent node.
 	 *
 	 * @param node
-	 * 				the node getting moved
+	 *            the node getting moved
 	 */
 	private void moveToMostRecent(Node<T, U> node) {
 
