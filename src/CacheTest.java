@@ -1,5 +1,4 @@
 import static org.junit.Assert.*;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -7,12 +6,15 @@ import org.junit.Test;
  */
 public class CacheTest {
 
-	private DataProvider<Integer, String> provider = new IntegerToTextProvider();
+	// instance variables
+	final private DataProvider<Integer, String> provider = new IntegerToTextProvider();
 	private Cache<Integer, String> cache;
 
 	@Test
-	//This method will test the cache system on multiple entries
-	public void testMultipleEntry() {
+	/**
+	 * This method will test the cache system with an LRUCache of capacity four.
+	 */
+	public void testMultipleNodes() {
 		cache = new LRUCache<Integer, String>(provider, 4);
 		cache.get(1);
 		assertTrue(cache.getNumMisses() == 1);
@@ -42,8 +44,10 @@ public class CacheTest {
 	}
 
 	@Test
-	//This method will test the cache system on a single entry
-	public void testSingleEntry() {
+	/**
+	 * This method will test the cache system with an LRUCache of capacity one.
+	 */
+	public void testSingleNode() {
 		cache = new LRUCache<Integer, String>(provider, 1);
 		cache.get(10);
 		assertTrue(cache.getNumMisses() == 1);

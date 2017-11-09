@@ -4,9 +4,9 @@ import java.util.HashMap;
  * An implementation of <tt>Cache</tt> that uses a least-recently-used (LRU)
  * eviction policy.
  */
-
 public class LRUCache<T, U> implements Cache<T, U> {
 
+	// instance variables
 	private int _numMisses;
 	private DataProvider<T, U> _provider;
 	private int _capacity;
@@ -15,22 +15,31 @@ public class LRUCache<T, U> implements Cache<T, U> {
 	private Node<T, U> _leastRecent;
 
 	/**
-	 * 
-	 * Node class for values of _storedValues
+	 * Node class for values in the HashMap _storedValues
 	 *
 	 * @param <T>
 	 *            type of key
 	 * @param <U>
 	 *            type of value
 	 */
-
 	private class Node<T, U> {
 
+		// instance variables
 		T _key;
 		U _value;
 		Node<T, U> _previous;
 		Node<T, U> _next;
 
+		/**
+		 * @param key
+		 * 				the key stored
+		 * @param value
+		 * 				the value stored
+		 * @param previous
+		 * 				the previous node in the linked list
+		 * @param next
+		 * 				the next node in the linked list
+		 */
 		private Node(T key, U value, Node<T, U> previous, Node<T, U> next) {
 			_key = key;
 			_value = value;
@@ -103,19 +112,27 @@ public class LRUCache<T, U> implements Cache<T, U> {
 		}
 
 	}
-	//moving a node in LRUCache to be the first node
+
+	/**
+	 * Moving a node in the LRUCache to be the most recent node.
+	 *
+	 * @param node
+	 * 				the node getting moved
+	 */
 	private void moveToMostRecent(Node<T, U> node) {
+
 		node._previous._next = node._next;
 		node._next = _mostRecent;
 		node._previous = null;
 		_mostRecent._previous = node;
 		_mostRecent = node;
+
 	}
 
 	/**
 	 * Returns the number of cache misses since the object's instantiation.
 	 * 
-	 * @return the number of cache misses since the object's instantiation.
+	 * @return the number of cache misses since the object's instantiation
 	 */
 	public int getNumMisses() {
 		return _numMisses;

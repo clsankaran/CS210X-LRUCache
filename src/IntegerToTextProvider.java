@@ -1,15 +1,31 @@
 
+/**
+ * An implementation of <tt>DataProvider</tt> that converts Integer keys
+ * into String values.
+ *
+ * Note: used different data types to ensure T and U were not used interchangeably.
+ */
 public class IntegerToTextProvider implements DataProvider<Integer, String> {
 
 	@Override
-	/* This method will call upon the convertIntToString method to return the value of
-	  the number key to a string of the number*/
+	/**
+	 * This method will call upon the convertIntToString method to return the value of
+	 * the number key to a string of the number.
+	 *
+	 * @param key
+	 * 				the key
+	 */
 	public String get(Integer key) {
 		return convertIntToString(key);
 	}
-	/* This method will check every key from 0 to 20 and return the key that is called
+
+	/**
+	 * This method will check every key from 0 to 20 and return the key that is called
 	 * upon as a string. If it is not within the range of 0 to 20 it will return that 
 	 * it is not in the range.
+	 *
+	 * @param key
+	 * 				the key
 	 */
 	private String convertIntToString(Integer key) {
 		if (key == 0)
@@ -57,4 +73,5 @@ public class IntegerToTextProvider implements DataProvider<Integer, String> {
 		else
 			return "int not in range";
 	}
+
 }
