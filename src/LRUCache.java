@@ -1,8 +1,12 @@
 import java.util.HashMap;
 
 /**
+ * 
  * An implementation of <tt>Cache</tt> that uses a least-recently-used (LRU)
  * eviction policy.
+ *
+ * @param <T>
+ * @param <U>
  */
 public class LRUCache<T, U> implements Cache<T, U> {
 
