@@ -41,6 +41,8 @@ public class CacheTest {
 		assertTrue(cache.getNumMisses() == 6);
 		cache.get(4); // making sure that calling not most nor least recent works
 		assertTrue(cache.getNumMisses() == 6);
+		assertEquals(cache.get(4), "four"); // making sure the correct data is returned from cache
+		assertEquals(cache.get(6), "six"); // making sure the correct data is returned from data provider
 	}
 
 	@Test
@@ -59,6 +61,8 @@ public class CacheTest {
 		assertTrue(cache.getNumMisses() == 3);
 		cache.get(10); // making sure that it doesn't miss
 		assertTrue(cache.getNumMisses() == 3);
+		assertEquals(cache.get(10), "ten"); // making sure the correct data is returned from cache
+		assertEquals(cache.get(12), "twelve"); // making sure the correct data is returned from data provider
 	}
 
 }
